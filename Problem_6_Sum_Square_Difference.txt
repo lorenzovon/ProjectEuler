@@ -1,0 +1,16 @@
+public class Main {
+    
+    public long sum(int n){
+        return (n*(n+1))/2 ;
+    }
+    
+    public long sumSquared(int n){
+        return (n*(n+1)*((2*n) + 1))/6 ;
+    }
+    
+    public static void main(String[] args) {
+        Main MyObj = new Main() ;
+        long input = 100L ;
+        System.out.println(MyObj.sum(100)*MyObj.sum(100) - MyObj.sumSquared(100));
+    }
+}
