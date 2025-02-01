@@ -1,0 +1,37 @@
+public class Main {
+    
+    public boolean isPrime(long n){
+        if( n < 2 ){
+            return false ;
+        }
+        for( int i = 2 ; i <= n/i ; i ++ ){
+            if( n % i == 0 ){
+                return false ;
+            }
+        }
+        return true ;
+    }
+    
+    public long nthPrimeFactor(long n){
+        long largestPrime = 2 ; 
+        long currentIteration = n ;
+        long currentLargestPrimeFactor = largestPrime ;
+        while ( currentIteration > 0 ){
+            currentLargestPrimeFactor = largestPrime ;
+            largestPrime ++ ;
+            while( ! isPrime(largestPrime) ){
+                largestPrime ++ ;
+            }
+            currentIteration -- ;
+        }
+        return currentLargestPrimeFactor ;
+        
+    }
+    
+    public static void main(String[] args) {
+        Main MyObj = new Main() ;
+        long input = 10001L ;
+        System.out.println(MyObj.nthPrimeFactor(input));
+    }
+    
+}
