@@ -1,0 +1,53 @@
+import java.util.ArrayList ;
+
+public class Main {
+    
+    public boolean isPalindrome(int n){
+        ArrayList<Integer> number = new ArrayList<Integer>() ;
+        int input = n ;
+        while( n > 0 ){
+            number.add( n%10 ) ;
+            n /= 10 ;
+        }
+        int arrayLength = number.size() ;
+        for(int i = 0 ; i < arrayLength/2 ; i ++){
+            if( number.get(i) == number.get(arrayLength - 1 - i) ){
+                continue ;
+            }
+            else{
+                return false ;
+            }
+        }
+        return true ;
+    }
+    
+    public int largestPalindrome(int digits){
+        int max = 1 ;
+        int min = 1 ;
+        for(int i = 1 ; i <= digits ; i ++){
+            max *= 10 ;
+        }
+        max = max - 1 ;
+        for(int i = 1 ; i < digits ; i ++){
+            min *= 10 ;
+        }
+        int biggestPalindrome = 0 ;
+        for( int i = max ; i >= min ; i-- ){
+            for(int j = i ; j >= min ; j-- ){
+                if(isPalindrome(i*j)){
+                    if(biggestPalindrome < (i*j) ){
+                        biggestPalindrome = i*j ;   
+                    }
+                }
+            }
+        }
+        return biggestPalindrome ;
+    }
+    
+    public static void main(String[] args) {
+        Main MyObj = new Main() ;
+        int input = 3 ;
+        System.out.println(MyObj.largestPalindrome(input));
+    }
+    
+}
