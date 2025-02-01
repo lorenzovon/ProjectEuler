@@ -1,0 +1,24 @@
+public class Main {
+    
+    public int sumOfFibonacci(int n){
+        int sum = 0 ;
+        int[] fibonacci = new int[3] ;
+        fibonacci[0] = 1 ;
+        fibonacci[1] = 1 ;
+        while( fibonacci[2] < n ){
+            fibonacci[2] = fibonacci[0] + fibonacci[1] ;
+            fibonacci[0] = fibonacci[1] ;
+            fibonacci[1] = fibonacci[2] ;
+            if( fibonacci[2] % 2 == 0) {
+                sum += fibonacci[2] ;
+            }
+        }
+        return sum ;
+    }
+    
+    public static void main(String[] args) {
+        Main MyObj = new Main() ;
+        System.out.println(MyObj.sumOfFibonacci(4000000));
+    }
+    
+}
