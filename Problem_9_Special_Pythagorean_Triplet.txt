@@ -1,0 +1,47 @@
+public class Main {
+    
+    public boolean isZero(int sum, int a, int b){
+        if( (2*sum*(a+b)) - (2*a*b) == (sum*sum) ){
+            return true ;
+        }
+        else{
+            return false ;
+        }
+    }
+    
+    public int[] pythagoreanTriplet(int sum){
+        int[] output = new int[3] ;
+        // Since a + b + c = sum, and a^2 + b^2 = c^2 
+        // a^2 + b^2 + 2a*b = sum^2 + c^2 - 2*sum*c
+        // c^2 + 2a*b = sum^2 + c^2 - 2*sum*c
+        // sum^2 = 2a*b + 2*sum*c
+        // sum^2 = 2a*b + 2*sum*(sum-a-b)
+        // sum^2 = 2*a*b + 2*sum^2 - 2*sum*a - 2*sum*b
+        // 2(sum)(a+b) - 2ab = sum^2
+        
+        for( int i = 0 ; i < sum ; i ++ ){
+            for(int j = i+1 ; j < sum ; j ++ ){
+                if(isZero(sum, i, j)){
+                    output[0] = i ;
+                    output[1] = j ;
+                    output[2] = sum - output[0] - output[1] ;
+                }
+            }
+        }
+        
+        return output ;
+        
+    }
+    
+    public static void main(String[] args) {
+        Main MyObj = new Main() ;
+        int input = 1000 ;
+        int[] output =  MyObj.pythagoreanTriplet(input) ;
+        System.out.println(output[0]);
+        System.out.println(output[1]);
+        System.out.println(output[2]);
+        long response = output[0]*output[1]*output[2];
+        System.out.println(response);
+    }
+    
+}
