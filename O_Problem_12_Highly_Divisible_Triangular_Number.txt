@@ -1,0 +1,37 @@
+public class Main {
+    
+    public int numberOfDivisors(long n){
+        int divisors = 0 ;
+        for(long i = 1 ; i <= n ; i ++ ){
+            if( n % i == 0 ){
+                divisors ++ ;
+            }
+        }
+        return divisors ;
+    }
+    
+    public long sumofNNumbers(long n){
+        return ((n * (n+1)) / 2) ;
+    }
+    
+    public int triangleNumberCalculator(int min){
+        int divisors = 0 ;
+        int i = 1 ;
+        while( divisors <= min ){
+            if( numberOfDivisors(sumofNNumbers(i)) > min ){
+                return i ;
+            }
+            else{
+                i = i + 1 ;
+            }
+        }
+        return i ;
+    }
+    
+    public static void main(String[] args) {
+        Main MyObj = new Main() ;
+        int input = 500 ;
+        System.out.println(MyObj.triangleNumberCalculator(input));
+    }
+    
+}
